@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/buttons.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/colorpicker.css') }}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">  
+
+  <script type="text/javascript" src="/static/js/iro.min.js"></script>
+  <script type="text/javascript" src="/static/js/displayImg.js"></script>
+  <script type="text/javascript" src="/static/js/query_color.js"></script>
+</head>
+
+<body>
+<h1>Query by Color</h1>
+
+
+<div class="row">
+  <!--Column 1: Color picker-->
+  <div class="column left">
+    <div class="colorPicker"></div>
+    <br><br>
+    <canvas id="canvas" width="200px" height="200px"></canvas>
+    <br><br>
+    <button class="button2" onclick="drawBox()">Reset</button>
+    <button class="button1" onclick="queryColor()">Search</button>
+  </div>
+
+  <!--Column 2: Images-->
+  <div class="column right">
+    <div id="image-grid">
+    </div>
+  </div>
+</div>
+
+<script>drawBox(); loadImages();</script>
+
+</body>
+</html>
