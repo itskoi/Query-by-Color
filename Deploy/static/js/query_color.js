@@ -12,10 +12,12 @@ function hex2rgb(hex) {
   return ['0x' + hex[1] + hex[2] | 0, '0x' + hex[3] + hex[4] | 0, '0x' + hex[5] + hex[6] | 0];
 }
 
-function drawBox() {
+function drawBox(reset) {
     var canvas = document.getElementById("canvas"),
         c = canvas.getContext("2d");
-    canvas.addEventListener('click', (e) => handleClick(e, c));
+    if (reset != true) {
+        canvas.addEventListener('click', (e) => handleClick(e, c));
+    }
 
     c.beginPath();
     c.fillStyle = "white";
