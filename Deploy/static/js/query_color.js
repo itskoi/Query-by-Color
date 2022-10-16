@@ -1,7 +1,7 @@
 var canvasSize = 200,
     lineWidth=2,
-    rows = 3,
-    cols = 3;
+    rows = 4,
+    cols = 4;
 
 var boxSize = parseInt(Math.floor(canvasSize/rows));
 
@@ -71,6 +71,9 @@ function queryColor() {
     headers: new Headers({
       "content-type": "application/json"
       })
+    }).then(response=>response.json()).then(data=>{
+        console.log(data);
+        loadImages(data);
     })
 }
 

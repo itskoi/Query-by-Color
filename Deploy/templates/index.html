@@ -21,7 +21,7 @@
 <h1>Query by Color</h1>
 
 
-<div class="row">
+<div class="row prevent-select">
   <!--Column 1: Color picker-->
   <div class="column left">
     <div class="colorPicker"></div>
@@ -39,7 +39,7 @@
   </div>
 </div>
 
-<script>drawBox(false); loadImages();</script>
+    <script>drawBox(false); loadImages({{ image_indices }});</script>
 
 </body>
 </html>
