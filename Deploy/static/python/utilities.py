@@ -17,7 +17,7 @@ width, height = 128, 128
 C = 256
 K = 8
 P = 4
-NUM_CAND = 25 
+NUM_CAND = 40 
 
 # ----------- FUNCTION ------------#
 def initiate():
@@ -33,7 +33,7 @@ def initiate():
 
 def parseRGB(rgbString):
     if rgbString == -1:
-        return -1
+        return torch.Tensor([-1]) 
     rgbString = rgbString[4:-1]
     RGB = [int(x.strip()) for x in rgbString.split(',')] 
     return torch.Tensor(RGB) / 255.0
@@ -52,7 +52,6 @@ def query_global(color, global_candidates, rgb_values):
     image_scores = global_candidates[dc].view((-1))
 
     return image_scores
-
 
 def query_local(position, color, local_candidates, rgb_values):
     # Find the closet predefined color to query color
