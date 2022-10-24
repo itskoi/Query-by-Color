@@ -7,8 +7,11 @@
   user-select: none; /* Standard syntax */
 }
 
+
 img {
   border-radius: 4px;
+  width: 150px;
+  height: 150px;
 }
 
 .column {
@@ -21,6 +24,7 @@ img {
 
 .right {
   width: 75%;
+  overflow: auto;
 }
 
 /* Clear floats after the columns */
@@ -31,7 +35,7 @@ img {
 }
 
 
-html { width: 100%; height:100%; overflow:hidden; }
+html { width: 100%; height:100%; overflow:auto; }
 
 body { 
 	width: 100%;
@@ -51,7 +55,7 @@ body {
 }
 
 h1 {
-	font-size: 60pt;
+	font-size: 40pt;
 	font-weight: 800;
 }
 

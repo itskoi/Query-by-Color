@@ -6,6 +6,7 @@ var canvasSize = 200,
 var boxSize = parseInt(Math.floor(canvasSize/rows));
 
 var cells = new Array(rows * cols).fill(-1);
+var global_cell = -1;
 var selected_color = "";
 
 function hex2rgb(hex) {
@@ -13,26 +14,45 @@ function hex2rgb(hex) {
 }
 
 function drawBox(reset) {
-    var canvas = document.getElementById("canvas"),
-        c = canvas.getContext("2d");
+    var canvas1 = document.getElementById("canvas1"),
+        c1 = canvas1.getContext("2d");
+    var canvas2 = document.getElementById("canvas2"),
+        c2 = canvas2.getContext("2d");
+
     if (reset != true) {
-        canvas.addEventListener('click', (e) => handleClick(e, c));
+        canvas1.addEventListener('click', (e) => handleClick(e, c1));
+    } else {
+        cells = new Array(rows * cols).fill(-1);
     }
 
-    c.beginPath();
-    c.fillStyle = "white";
-    c.lineWidth = lineWidth;
-    c.strokeStyle = 'black';
+    // Draw local rects
+    c1.beginPath();
+    c1.fillStyle = "white";
+    c1.lineWidth = lineWidth;
+    c1.strokeStyle = 'black';
+
     for (var row = 0; row < rows; row++) {
         for (var column = 0; column < cols; column++) {
           var x = column * boxSize;
           var y = row * boxSize;
-          c.rect(x, y, boxSize, boxSize);
-          c.fill();
-          c.stroke();
+          c1.rect(x, y, boxSize, boxSize);
+          c1.fill();
+          c1.stroke();
         }
     }
-    c.closePath();
+    c1.closePath();
+
+    // Draw global rect
+    c2.beginPath();
+    c2.fillStyle = "white";
+    c2.lineWidth = lineWidth;
+    c2.strokeStyle = 'black';
+
+    c2.rect(0, 0, boxSize, boxSize);
+    c2.fill();
+    c2.stroke();
+
+    c2.closePath();
 }
 
 function handleClick(e, c) {
@@ -54,7 +74,6 @@ function handleClick(e, c) {
                 c.fillStyle = selected_color;
             }
 
-
             // Update color
             c.fillRect(posx * boxSize, posy * boxSize, boxSize, boxSize);
             c.stroke();
@@ -63,18 +82,35 @@ function handleClick(e, c) {
 }
 
 function queryColor() {
-    fetch(`${window.origin}/color`, {
-    method: "POST",
-    credentials: "include",
-    body: JSON.stringify(cells),
-    cache: "no-cache",
-    headers: new Headers({
-      "content-type": "application/json"
-      })
-    }).then(response=>response.json()).then(data=>{
-        console.log(data);
-        loadImages(data);
-    })
+    let global_color = document.getElementById("checkbox").checked;
+
+    if (global_color == true) {
+        fetch(`${window.origin}/global_color`, {
+        method: "POST",
+        credentials: "include",
+        body: JSON.stringify(selected_color),
+        cache: "no-cache",
+        headers: new Headers({
+          "content-type": "application/json"
+          })
+        }).then(response=>response.json()).then(data=>{
+            console.log(data);
+            loadImages(data);
+        })
+    } else {
+        fetch(`${window.origin}/local_color`, {
+        method: "POST",
+        credentials: "include",
+        body: JSON.stringify(cells),
+        cache: "no-cache",
+        headers: new Headers({
+          "content-type": "application/json"
+          })
+        }).then(response=>response.json()).then(data=>{
+            console.log(data);
+            loadImages(data);
+        })
+    }
 }
 
 // Create a new color picker instance
@@ -88,10 +124,21 @@ var colorPicker = new iro.ColorPicker(".colorPicker", {
   borderColor: "#fff",
 });
 
-colorPicker.on(["color:init", "color:change"], function(color){
+colorPicker.on(["color:init"], (color)=>selected_color=color.rgbString);
 
-  //console.log(color.rgbString);
-  selected_color = color.rgbString;
+
+colorPicker.on(["color:change"], function(color){
+
+    //console.log(color.rgbString);
+    selected_color = color.rgbString;
+
+    // Update global color
+    var canvas2 = document.getElementById("canvas2"),
+        c2 = canvas2.getContext("2d");
+
+    c2.fillStyle = selected_color;
+    c2.fillRect(0, 0, boxSize, boxSize);
+    c2.stroke();
   
 });
 
