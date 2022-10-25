@@ -11,6 +11,13 @@ function queryText() {
       })
     }).then(response=>response.json()).then(data=>{
         console.log(data);
-        //loadImages(data);
+        loadImages(data);
     })
 } 
+
+function clearText() {
+    let textinput = document.getElementById("textinput");
+
+    textinput.value = ''
+}
+

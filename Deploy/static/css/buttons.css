@@ -1,5 +1,5 @@
 .button1 {
-  width: 160px;
+  width: 120px;
   height: 40px;
   background: #5E5DF0;
   border-radius: 999px;
@@ -34,8 +34,8 @@
 }
 
 .button2 {
-  width: 156.73px;
-  height: 35.2px;
+  width: 120px;
+  height: 40px;
   background: #f04444;
   border-radius: 999px;
   box-shadow: #f04444 0 10px 20px -10px;

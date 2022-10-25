@@ -9,7 +9,7 @@
   <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/buttons.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/inputs.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/text.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/colorpicker.css') }}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">  
 
@@ -20,15 +20,19 @@
 </head>
 
 <body>
-<h1>Query by Text</h1>
+<h1>AIC2022 UIT-RainbowShine</h1>
 
 
 <div class="row prevent-select">
   <!--Column 1: Text-->
   <div class="column left">
-    <input class="textinput" type="text" id="textinput">
+    <input class="textinput" type="text" id="textinput" placeholder="Enter a query...">
     <br><br>
+    <button class="button2" onclick="clearText()">Clear</button>
     <button class="button1" onclick="queryText()">Search</button>
+    <br><br>
+    <textarea id="textarea" rows="30" disabled></textarea>
+
     <!--COLOR PICKER -->
     <!--<div class="colorPicker"></div>-->
     <!--<br><br>-->
@@ -44,13 +48,16 @@
   </div>
 
   <!--Column 2: Images-->
+  <button class="button2" onclick="resetSelect()">Reset</button>
+  <button class="button1" onclick="selectAll()">Select all</button>
+  <br><br>
   <div class="column right">
     <div id="image-grid">
     </div>
   </div>
 </div>
 
-    <script>drawBox(false); loadImages({{ image_indices }});</script>
+    <!--<script>drawBox(false); loadImages({{ image_indices }});</script>-->
 
 </body>
 </html>

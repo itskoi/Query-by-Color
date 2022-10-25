@@ -19,9 +19,20 @@ K = 8
 P = 4
 NUM_CAND = 40 
 
+CONTEST_BATCH_PREFIX = "C00_V0000/"
+
 # ----------- TEXT FUNCTION ------------#
-def make_img_path(imgID):
-    pass
+def make_img_path(imgIDs):
+    ```
+        imgsIDs: list of images dict, each image contains video_name, keyframe_id, and score.
+    ```
+    # [CONTEST_BATCH_PREFIX+'_'+img.video_name+'/'+format_keyframeid(img.keyframe_id+'.jpg') for img in imgIDs] 
+    return [CONTEST_BATCH_PREFIX+img+'' for img in imgIDs]
+
+def format_keyframeid(fid):
+    fid = str(fid)
+    fid = ('0' * (6-len(fid))) + fid
+    return fid 
 
 # ----------- COLOR FUNCTION ------------#
 def initiate():
