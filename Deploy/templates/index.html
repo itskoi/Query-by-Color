@@ -9,31 +9,38 @@
   <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/buttons.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/inputs.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/colorpicker.css') }}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">  
 
   <script type="text/javascript" src="/static/js/iro.min.js"></script>
   <script type="text/javascript" src="/static/js/displayImg.js"></script>
   <script type="text/javascript" src="/static/js/query_color.js"></script>
+  <script type="text/javascript" src="/static/js/query_text.js"></script>
 </head>
 
 <body>
-<h1>Query by Color</h1>
+<h1>Query by Text</h1>
 
 
 <div class="row prevent-select">
-  <!--Column 1: Color picker-->
+  <!--Column 1: Text-->
   <div class="column left">
-    <div class="colorPicker"></div>
+    <input class="textinput" type="text" id="textinput">
     <br><br>
-    <canvas id="canvas1" width="200px" height="200px"></canvas>
-    <br>
-    <input type="checkbox" name="globalc" id="checkbox">
-    <label for="globalc"> Use global color?</label>
-    <canvas id="canvas2" width="40px" height="40px"></canvas>
-    <br><br>
-    <button class="button2" onclick="drawBox(true)">Reset</button>
-    <button class="button1" onclick="queryColor()">Search</button>
+    <button class="button1" onclick="queryText()">Search</button>
+    <!--COLOR PICKER -->
+    <!--<div class="colorPicker"></div>-->
+    <!--<br><br>-->
+    <!--<canvas id="canvas1" width="200px" height="200px"></canvas>-->
+    <!--<br>-->
+    <!--<input type="checkbox" name="globalc" id="checkbox">-->
+    <!--<label for="globalc"> Use global color?</label>-->
+    <!--<canvas id="canvas2" width="40px" height="40px"></canvas>-->
+    <!--<br><br>-->
+    <!--<button class="button2" onclick="drawBox(true)">Reset</button>-->
+    <!--<button class="button1" onclick="queryColor()">Search</button>-->
+    
   </div>
 
   <!--Column 2: Images-->

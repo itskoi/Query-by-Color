@@ -9,18 +9,34 @@ from utilities import *
 # -----------------------------------
 app = Flask(__name__)
 
-with open('static/models/img_dict.json') as file:
-    img_dict = json.load(file)
-global_candidates, local_candidates, rgb_values = initiate()
+
 # -----------------------------------
 
 @app.route('/')
 def home():
     return render_template('index.html', image_indices=-1)
 
+# ======== QUERY BY TEXT ========
+@app.route('/query_text', methods = ['POST'])
+def query_text():
+    textinput = request.get_json()
+    
+    # PASS THROUGH A MODEL
+    result = textinput
+
+    # result = make_img_path(result)
+
+    return jsonify(result)
+
+# ======== QUERY BY COLOR ========
+# with open('static/models/img_dict.json') as file:
+    # img_dict = json.load(file)
+# global_candidates, local_candidates, rgb_values = initiate()
+
+
 @app.route('/global_color', methods = ['POST'])
 def query_by_global_color():
-    color = parseRGB(request.get_json());
+    color = parseRGB(request.get_json())
 
     image_scores = query_global(color, global_candidates, rgb_values)
     image_indices = np.argsort(image_scores)[:NUM_CAND]

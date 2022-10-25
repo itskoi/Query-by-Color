@@ -19,7 +19,11 @@ K = 8
 P = 4
 NUM_CAND = 40 
 
-# ----------- FUNCTION ------------#
+# ----------- TEXT FUNCTION ------------#
+def make_img_path(imgID):
+    pass
+
+# ----------- COLOR FUNCTION ------------#
 def initiate():
     print('Loading Global candidates...')
     global_candidates = torch.load(os.path.join(model_path, global_model_filename))
@@ -63,3 +67,4 @@ def query_local(position, color, local_candidates, rgb_values):
 
     return image_scores
 # ---------------------------------#
+
