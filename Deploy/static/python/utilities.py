@@ -1,6 +1,7 @@
 import numpy as np
 import torch
 import os
+import json
 from baseline import *
 
 
@@ -36,6 +37,10 @@ def format_keyframeid(fid):
     return fid 
 
 # ----------- COLOR FUNCTION ------------#
+# with open('static/models/img_dict.json') as file:
+# img_dict = json.load(file)
+# global_candidates, local_candidates, rgb_values = initiate()
+
 def initiate():
     print('Loading Global candidates...')
     global_candidates = torch.load(os.path.join(model_path, global_model_filename))
@@ -43,6 +48,7 @@ def initiate():
     local_candidates = torch.load(os.path.join(model_path, local_model_filename))
     print('Loading Colors...')
     rgb_values = torch.load(os.path.join(model_path, color_filename))
+
     print('Loading done!')
 
     return global_candidates, local_candidates, rgb_values

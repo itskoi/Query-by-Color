@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, redirect, url_for, request, render_template
 import sys
-import json
 import numpy as np
 
 sys.path.append('static/python')
@@ -8,7 +7,6 @@ from utilities import *
 from baseline import search_engine 
 # -----------------------------------
 app = Flask(__name__)
-
 
 # -----------------------------------
 
@@ -33,9 +31,6 @@ def query_text():
     return jsonify({"info": search_result, "path": paths})
 
 # ======== QUERY BY COLOR ========
-# with open('static/models/img_dict.json') as file:
-    # img_dict = json.load(file)
-# global_candidates, local_candidates, rgb_values = initiate()
 
 
 @app.route('/global_color', methods = ['POST'])
