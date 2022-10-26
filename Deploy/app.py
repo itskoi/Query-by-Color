@@ -1,12 +1,16 @@
 from flask import Flask, jsonify, redirect, url_for, request, render_template
 import sys
 import numpy as np
+from flask_cors import CORS, cross_origin
+from flask_ngrok import run_with_ngrok
 
 sys.path.append('static/python')
 from utilities import *
 from baseline import search_engine 
 # -----------------------------------
 app = Flask(__name__)
+cors = CORS(app, resources={r"/": {"origins": "*"}})
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 # -----------------------------------
 
@@ -66,3 +70,6 @@ def query_by_local_color():
 
     return jsonify(result)
 
+if __name__=="__main__":
+    run_with_ngrok(app)
+    app.run()
