@@ -21,8 +21,12 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 # P = 4
 # NUM_CAND = 40 
 
+print('Loading Tex Embedding...')
 TextEmbedder = TextEmbedding()
+print('Done!')
+print('Loading Visual Features DB...')
 visual_features_db= np.load("/app/DB/visual_features_db.npy", allow_pickle=True)
+print('Done!')
 
 # ----------- TEXT FUNCTION ------------#
 def make_img_path(imgIDs):
