@@ -78,7 +78,7 @@ h1 {
     list-style: none;
     position: fixed;
     text-align: left;
-    padding: 1rem 0 0 1rem;
+    padding: 1rem 0 0 1.5rem;
 }
 .menu.off{
     top: -200%;

@@ -21,3 +21,20 @@ function clearText() {
     textinput.value = ''
 }
 
+function copy2Clipboard() {
+    let textarea = document.getElementById('textarea');
+    navigator.clipboard.writeText(textarea.value);
+}
+
+function extractCSV() {
+    //TODO: IMPLEMENT THIS
+    console.log('EXTRACT CSV');
+    let textarea = document.getElementById('textarea');
+    var fileContents = JSON.stringify(textarea.value, null, 2);
+    var fileName = "query.csv";
+
+    var pp = document.createElement('a');
+    pp.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(fileContents));
+    pp.setAttribute('download', fileName);
+    pp.click();
+}

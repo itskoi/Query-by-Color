@@ -91,3 +91,33 @@
 .button3:active {
   background-color: #0b6100;
 }
+
+.icon_button {
+  width: 40px;
+  height: 40px;
+  background: #a6a6a6;
+  border-radius: 9px;
+  box-shadow: ##c7c7c7 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 6px 0 0 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  word-break: break-word;
+  border: 0; 
+  position: absolute;
+  bottom:55px;
+  right:20px;
+}
+
+.icon_button:hover {
+  box-shadow: #c7c7c7 0 20px 30px -10px;
+}
+
+.icon_button:active {
+  background-color: #c7c7c7;
+}
