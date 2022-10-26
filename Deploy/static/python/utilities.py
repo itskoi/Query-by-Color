@@ -22,7 +22,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 # NUM_CAND = 40 
 
 TextEmbedder = TextEmbedding()
-visual_features_db= np.load("/mlcv/WorkingSpace/Personals/baolp/AIC2022/DB/visual_features_db.npy", allow_pickle=True)
+visual_features_db= np.load("/app/DB/visual_features_db.npy", allow_pickle=True)
 
 # ----------- TEXT FUNCTION ------------#
 def make_img_path(imgIDs):
