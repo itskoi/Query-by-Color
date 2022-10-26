@@ -31,7 +31,8 @@ def query_text():
     print('Done!\nSearching...')
     search_result = search_engine(query_feat_arr, visual_features_db, 100)
     print('Done!')
-    print(search_result[0])
+
+    search_result = [{"video_name": img["video_name"], "keyframe_id": img["keyframe_id"]} for img in search_result]
 
     paths = make_img_path(search_result)
 
