@@ -21,7 +21,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 # P = 4
 # NUM_CAND = 40 
 
-print('Loading Tex Embedding...')
+print('Loading Text Embedding...')
 TextEmbedder = TextEmbedding()
 print('Done!')
 print('Loading Visual Features DB...')

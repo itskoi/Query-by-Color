@@ -26,8 +26,13 @@ def query_text():
     textinput = request.get_json()
     
     # PASS THROUGH A MODEL
+    print(f'Embedding query: {textinput} ...')
     query_feat_arr = TextEmbedder(textinput)
+    print('Done!\nSearching...')
     search_result = search_engine(query_feat_arr, visual_features_db, 100)
+    print('Done!')
+    print(search_result[0])
+
     paths = make_img_path(search_result)
 
     # result = make_img_path(result)
