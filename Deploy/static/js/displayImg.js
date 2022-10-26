@@ -1,5 +1,5 @@
-var imagePath="./static/images/";
-var numberOfImage=100;
+var imagePath= METADATA.KEYFRAME_PATH;
+var numberOfImage= METADATA.NUM_IMAGES;
 
 let selectedImgs = []
 

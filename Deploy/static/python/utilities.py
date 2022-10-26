@@ -1,33 +1,34 @@
 import numpy as np
 import torch
 import os
+from baseline import *
 
 
 print("Path at terminal when executing [utilities] file")
 print(os.getcwd() + "\n")
 
 # ------------ CONST --------------#
-model_path = 'static/models'
-global_model_filename = 'global_candidates.pt'
-local_model_filename = 'local_candidates.pt'
-color_filename = 'colors.pt'
+# model_path = 'static/models'
+# global_model_filename = 'global_candidates.pt'
+# local_model_filename = 'local_candidates.pt'
+# color_filename = 'colors.pt'
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-width, height = 128, 128
-C = 256
-K = 8
-P = 4
-NUM_CAND = 40 
+# width, height = 128, 128
+# C = 256
+# K = 8
+# P = 4
+# NUM_CAND = 40 
 
-CONTEST_BATCH_PREFIX = "C00_V0000/"
+TextEmbedder = TextEmbedding()
+visual_features_db= np.load("/mlcv/WorkingSpace/Personals/baolp/AIC2022/DB/visual_features_db.npy", allow_pickle=True)
 
 # ----------- TEXT FUNCTION ------------#
 def make_img_path(imgIDs):
     """
     imgsIDs: list of images dict, each image contains video_name, keyframe_id, and score.
     """
-    # [CONTEST_BATCH_PREFIX+'_'+img.video_name+'/'+format_keyframeid(img.keyframe_id+'.jpg') for img in imgIDs] 
-    return [CONTEST_BATCH_PREFIX+img+'' for img in imgIDs]
+    return [img.video_name+'/'+format_keyframeid(img.keyframe_id+'.jpg') for img in imgIDs] 
 
 def format_keyframeid(fid):
     fid = str(fid)

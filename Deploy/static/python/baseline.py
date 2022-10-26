@@ -55,8 +55,8 @@ def indexing_methods() -> List[Tuple[str, int, np.ndarray],]:
 
 # ==================================
 # #save db 
-np.save("DB/visual_features_db.npy", visual_features_db)
-visual_features_db= np.load("DB/visual_features_db.npy", allow_pickle=True)
+# np.save("DB/visual_features_db.npy", visual_features_db)
+# visual_features_db= np.load("DB/visual_features_db.npy", allow_pickle=True)
 
 
 """### Search engine"""
@@ -145,29 +145,29 @@ def csv_result(results,query_name):
   query_name="cosine/"+query_name
   df.to_csv(query_name, index=False,header=False)
 # ==================================
-df=pd.read_csv("query-pack-0.csv")
-# captions_video=json.lo
-count=1
-text_list=df["query"].tolist()
-text_embedd = TextEmbedding()
-for query in text_list:
-    #print(text)
-    results_list=[]
-    text_split=query.split(".")
-    print(text_split)
+# df=pd.read_csv("query-pack-0.csv")
+# # captions_video=json.lo
+# count=1
+# text_list=df["query"].tolist()
+# text_embedd = TextEmbedding()
+# for query in text_list:
+    # #print(text)
+    # results_list=[]
+    # text_split=query.split(".")
+    # print(text_split)
   
-    text=query
-    query_name="query-"+str(count)+".csv"
-    text_feat_arr = text_embedd(text)
-    search_result = search_engine(text_feat_arr, visual_features_db, 50)
-    print(search_result)
-    images=read_image(search_result)
-    visualize(images,query_name)
+    # text=query
+    # query_name="query-"+str(count)+".csv"
+    # text_feat_arr = text_embedd(text)
+    # search_result = search_engine(text_feat_arr, visual_features_db, 50)
+    # print(search_result)
+    # images=read_image(search_result)
+    # visualize(images,query_name)
     
-    count+=1
+    # count+=1
 
 
-    print(csv_result(search_result,query_name))
+    # print(csv_result(search_result,query_name))
 # """## DEMO"""
 
 # #@title Base System
