@@ -33,7 +33,7 @@ def make_img_path(imgIDs):
     """
     imgsIDs: list of images dict, each image contains video_name, keyframe_id, and score.
     """
-    return [img.video_name+'/'+format_keyframeid(img.keyframe_id+'.jpg') for img in imgIDs] 
+    return [img[video_name]+'/'+format_keyframeid(img[keyframe_id]+'.jpg') for img in imgIDs] 
 
 def format_keyframeid(fid):
     fid = str(fid)
