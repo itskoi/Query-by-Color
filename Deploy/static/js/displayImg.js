@@ -45,7 +45,12 @@ function loadImages(images) {
         for(var i=0;i< Math.min(numberOfImage, image_paths.length);i++){
             var img= document.createElement('img');
             img.classList.add("image");
-            img.src = imagePath+image_paths[i];
+            img.src = imagePath+'/'+image_paths[i];
+            if (image_infos[i]["batch"]=="1") {
+                img.src = METADATA.BATCH1 + img.src;
+            } else {
+                img.src = METADATA.BATCH2 + img.src;
+            }
             img.title=image_paths[i];
             img.addEventListener("click", function() {onclickImg(this);});
 

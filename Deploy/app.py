@@ -32,7 +32,7 @@ def query_text():
     search_result = search_engine(query_feat_arr, visual_features_db, 100)
     print('Done!')
 
-    search_result = [{"video_name": img["video_name"], "keyframe_id": img["keyframe_id"]} for img in search_result]
+    search_result = [{"batch": "1" if int(img["video_name"].split('_')[0][1:]) < 100 else "2", "video_name": img["video_name"], "keyframe_id": img["keyframe_id"]} for img in search_result]
 
     paths = make_img_path(search_result)
 
