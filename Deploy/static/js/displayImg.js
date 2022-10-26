@@ -46,7 +46,13 @@ function loadImages(images) {
         for(var i=0;i< Math.min(numberOfImage, image_paths.length);i++){
             var img= document.createElement('img');
             img.classList.add("image");
-            img.src = dataPath+(METADATA.BATCH1 if image_infos[i]["batch"] == "1" else METADATA.BATCH2)+imagePath+'/'+image_paths[i];
+            let header = dataPath;
+            if (image_infos[i].batch == "1") {
+                header += METADATA.BATCH1;
+            } else {
+                header += METADATA.BATCH2;
+            }
+            img.src = header+imagePath+'/'+image_paths[i];
             img.title=image_paths[i];
             img.addEventListener("click", function() {onclickImg(this);});
 
