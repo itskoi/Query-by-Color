@@ -32,17 +32,28 @@ function selectAll() {
     }
 }
 
-function loadImages(image_paths) {
-        var parentDIV = document.getElementById("image-grid");
+function loadImages(images) {
+    var image_paths = images.path;
+    var image_infos = images.info;
+    var parentDIV = document.getElementById("image-grid");
+    // TODO: UPDATE VIDEO ID AND FRAME ID
+
     if (image_paths == -1) {
         // Do nothing
     } else {
         removeAllChildNodes(parentDIV);
         for(var i=0;i< Math.min(numberOfImage, image_paths.length);i++){
             var img= document.createElement('img');
+            img.classList.add("image");
             img.src = imagePath+image_paths[i];
             img.title=image_paths[i];
             img.addEventListener("click", function() {onclickImg(this);});
+
+            // Add right click event
+            img.addEventListener('contextmenu', function(ev) {
+                showmenu(ev, this);
+            });
+
             parentDIV.appendChild(img);
         }
     }
