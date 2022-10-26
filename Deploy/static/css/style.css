@@ -10,14 +10,17 @@
 /* ==== IMAGES === */
 
 img {
+  margin: 3px 3px 3px 3px;
   border-radius: 4px;
   width: 150px;
   height: 150px;
 }
 img:hover { 
+  margin: 0 0 0 0;
   border: 3px solid #fca103; 
 }
 .clickedImg { 
+  margin: 0 0 0 0;
   border: 3px solid #03fca1; 
 }
 
@@ -64,3 +67,32 @@ h1 {
 	font-weight: 800;
 }
 
+.menu{
+    width: 14rem;
+    height: 5rem;
+    background-color: #f4f4f4;
+    color: #333;
+    border: 1px solid #aaa;
+    box-shadow: 2px 2px 2px #999;
+    border-radius: 0.2rem;
+    list-style: none;
+    position: fixed;
+    text-align: left;
+    padding: 1rem 0 0 1rem;
+}
+.menu.off{
+    top: -200%;
+    left: -200%;
+}
+.menu-item{
+    height: 2.5rem;
+    line-height: 1.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+    cursor: pointer;
+}
+.menu-item:hover,
+.menu-item:active{
+    color: #000;
+    font-weight: 600;
+}

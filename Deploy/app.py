@@ -28,7 +28,7 @@ def query_text():
 
     # result = make_img_path(result)
 
-    return jsonify(result)
+    return jsonify({"info": img, "path": result})
 
 # ======== QUERY BY COLOR ========
 # with open('static/models/img_dict.json') as file:
